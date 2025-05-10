@@ -26,17 +26,6 @@ echo -e "${GREEN}>>> Creando enlaces simbólicos (symlinks)...${RESET}"
 # Ruta actual del repo
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Symlinks desde config/
-if [ -d "$DOTFILES_DIR/config" ]; then
-  echo -e "${GREEN}→ Configuración en .config${RESET}"
-  mkdir -p "$HOME/.config"
-  for item in "$DOTFILES_DIR/config/"*; do
-    base_item="$(basename "$item")"
-    ln -sf "$item" "$HOME/.config/$base_item"
-    echo "  ↪ ~/.config/$base_item"
-  done
-fi
-
 # Symlinks desde home/
 if [ -d "$DOTFILES_DIR/home" ]; then
   echo -e "${GREEN}→ Archivos ocultos en $HOME${RESET}"
